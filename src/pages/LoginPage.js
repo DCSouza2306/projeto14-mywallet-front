@@ -2,21 +2,37 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
+import axios from "axios";
+import { URL_BASE } from "../constants/urls";
+import { AuthContext } from "../providers/auth";
 
 export default function SingInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [enable, setEnable] = useState(false);
+  const { setUserData } = React.useContext(AuthContext);
+  const navigate = useNavigate();
 
-  function loginUser(e){
+  function loginUser(e) {
     e.preventDefault();
 
     setEnable(true);
 
     const newLogin = {
-        email: email,
-        password: password
-    }
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post(`${URL_BASE}/login`, newLogin)
+      .then((res) => {
+        navigate("/wallet");
+        setUserData(res.data);
+      })
+      .catch((err) =>{
+        alert(err.response.data.message);
+        setEnable(false);
+      } );
   }
 
   return (
@@ -68,13 +84,16 @@ const LoginPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 
   h1 {
     font-family: "Saira Stencil One", cursive;
     font-size: 32px;
     color: #ffffff;
-    margin-top:70px;
+    margin-top: 70px;
+  }
+
+  p {
+    display: ${(props) => (props.disable)};
   }
 
   form {
@@ -101,18 +120,21 @@ const LoginPage = styled.div`
       text-decoration: none;
       color: #ffffff;
       margin-top: 10px;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
-  button{
+  button {
     background-color: #8c11be;
     border: none;
     color: #ffffff;
     margin-top: 25px;
   }
 
-  button:hover{
+  button:hover {
     cursor: pointer;
   }
 `;
