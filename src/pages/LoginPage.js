@@ -29,10 +29,10 @@ export default function SingInPage() {
         navigate("/wallet");
         setUserData(res.data);
       })
-      .catch((err) =>{
+      .catch((err) => {
         alert(err.response.data.message);
         setEnable(false);
-      } );
+      });
   }
 
   return (
@@ -44,7 +44,7 @@ export default function SingInPage() {
           disabled={enable}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="email"
+          placeholder="E-mail"
           required
         />
         <input
@@ -52,7 +52,7 @@ export default function SingInPage() {
           disabled={enable}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="senha"
+          placeholder="Senha"
           required
         />
         <button className="button-login" type="submit" disabled={enable}>
@@ -84,16 +84,16 @@ const LoginPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   h1 {
     font-family: "Saira Stencil One", cursive;
     font-size: 32px;
     color: #ffffff;
-    margin-top: 70px;
   }
 
   p {
-    display: ${(props) => (props.disable)};
+    display: ${(props) => props.disable};
   }
 
   form {
