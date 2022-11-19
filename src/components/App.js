@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/wallet" element={<WalletPage />} />
-        <Route path="/launch" element={<LaunchPage />} />
+        <Route path="/launch/:type" element={<LaunchPage />} />
       </Routes>
     </BrowserRouter>
   );

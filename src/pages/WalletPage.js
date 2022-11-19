@@ -20,15 +20,18 @@ export default function WalletPage() {
       <Wallet />
 
       <div className="bottom">
-        <button>
-          <ion-icon name="add-circle-outline"></ion-icon>
-          <p>Nova Entrada</p>
-        </button>
-
-        <button>
-          <ion-icon name="remove-circle-outline"></ion-icon>
-          <p>Nova Saida</p>
-        </button>
+        <Link to="/launch/income" style={{ textDecoration: "none" }}>
+          <button>
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <p>Nova Entrada</p>
+          </button>
+        </Link>
+        <Link to="/launch/expense" style={{ textDecoration: "none" }}>
+          <button>
+            <ion-icon name="remove-circle-outline"></ion-icon>
+            <p>Nova Saida</p>
+          </button>
+        </Link>
       </div>
     </PrincipalPage>
   );
