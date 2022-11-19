@@ -1,4 +1,4 @@
-export default function SingUp(){
+export default function SingUpPage(){
     return(
         <>
         Tela de Sing-up

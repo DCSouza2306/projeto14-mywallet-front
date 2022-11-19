@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+
     }
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
