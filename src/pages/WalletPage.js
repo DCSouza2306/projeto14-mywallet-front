@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/auth";
 import Wallet from "../components/Wallet";
 
 
 export default function WalletPage() {
-  const { userData, setUserData } = React.useContext(AuthContext);
+  const { userData } = React.useContext(AuthContext);
 
   function deleteLocal(){
     localStorage.clear()

@@ -18,7 +18,7 @@ export default function Wallet() {
   useEffect(() => {
     axios.get(`${URL_BASE}/wallet`, config).then((res) => {
       const wallet = res.data;
-      setMyWallet(wallet);
+      setMyWallet(wallet.reverse());
       let incomes = 0;
       let expenses = 0;
       let sum;
@@ -48,6 +48,7 @@ export default function Wallet() {
         {myWallet.map((m) => (
           <Lauch
             key={m.id}
+            id={m.id}
             date={m.date}
             description={m.description}
             value={m.value}
