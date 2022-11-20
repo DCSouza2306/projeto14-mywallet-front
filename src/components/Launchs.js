@@ -8,7 +8,7 @@ export default function Lauch({ date, description, value, type }) {
           <p className="date">{date} </p>
           <p className="description">{description} </p>
         </div>
-        <p className="value">{value}</p>
+        <p className="value">{parseFloat(value).toFixed(2)}</p>
       </li>
     </LauchPage>
   );

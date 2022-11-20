@@ -1,17 +1,22 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/auth";
 import Wallet from "../components/Wallet";
 
+
 export default function WalletPage() {
-  const { userData } = React.useContext(AuthContext);
+  const { userData, setUserData } = React.useContext(AuthContext);
+
+  function deleteLocal(){
+    localStorage.clear()
+  }
 
   return (
     <PrincipalPage>
       <div className="top">
         <h2>Olá, {userData.name}</h2>
-        <Link to="/">
+        <Link to="/" onClick={deleteLocal}>
           <ion-icon name="exit-outline"></ion-icon>
         </Link>
       </div>

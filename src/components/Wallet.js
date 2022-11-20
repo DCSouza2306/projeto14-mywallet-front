@@ -58,7 +58,7 @@ export default function Wallet() {
 
       <div className="balance">
         <p>SALDO</p>
-        <p>{balance}</p>
+        <p>{balance.toFixed(2)}</p>
       </div>
     </IncomesAndExpenses>
   );

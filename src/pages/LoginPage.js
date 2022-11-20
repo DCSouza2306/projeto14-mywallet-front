@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
@@ -11,7 +11,15 @@ export default function SingInPage() {
   const [password, setPassword] = useState("");
   const [enable, setEnable] = useState(false);
   const { setUserData } = React.useContext(AuthContext);
+  const tokenAndUser = JSON.parse(localStorage.getItem("MyTokenAndUser"))
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(tokenAndUser){
+      setUserData(tokenAndUser);
+      navigate("/wallet");
+    }
+  },[])
 
   function loginUser(e) {
     e.preventDefault();
@@ -28,6 +36,7 @@ export default function SingInPage() {
       .then((res) => {
         navigate("/wallet");
         setUserData(res.data);
+        localStorage.setItem("MyTokenAndUser", JSON.stringify(res.data))
       })
       .catch((err) => {
         alert(err.response.data.message);
