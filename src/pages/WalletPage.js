@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { URL_BASE } from "../constants/urls";
 import { AuthContext } from "../providers/auth";
 import Wallet from "../components/Wallet";
 
@@ -17,19 +15,20 @@ export default function WalletPage() {
           <ion-icon name="exit-outline"></ion-icon>
         </Link>
       </div>
+
       <Wallet />
 
       <div className="bottom">
         <Link to="/launch/income" style={{ textDecoration: "none" }}>
           <button>
             <ion-icon name="add-circle-outline"></ion-icon>
-            <p>Nova Entrada</p>
+            <p className="text-button">Nova Entrada</p>
           </button>
         </Link>
         <Link to="/launch/expense" style={{ textDecoration: "none" }}>
           <button>
             <ion-icon name="remove-circle-outline"></ion-icon>
-            <p>Nova Saida</p>
+            <p className="text-button">Nova Saida</p>
           </button>
         </Link>
       </div>
@@ -92,7 +91,7 @@ const PrincipalPage = styled.div`
       cursor: pointer;
     }
 
-    p {
+    .text-button {
       width: 64px;
       text-align: left;
     }
